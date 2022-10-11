@@ -12,7 +12,7 @@ This is repo for following DevOps tasks:
 Installation and Set up (In progress)
 ----------------
 
- - Clone the repo: 'https://github.com/stkanev/devops_task.git'
+ - Clone the repo: 'https://github.com/stkanev/dev_tasks.git'
  - Installation:
    - python
    - docker
@@ -30,6 +30,22 @@ Execution (In progress)
 ----------------
 
 - Local (dev) environment
-  - run
-  - test
-- Execute docker run command.
+  - It is used VSC  ![VSC](images/vsc.png) 
+  - Buld and run docker image with docker-compose
+```
+docker-compose build
+docker-compose up # The app can be seen on http://localhost:5002/ 
+```
+- GitHub environment
+  - The following Gihub Secrets must be set up ![GH_SECRETS](images/gh_secrets.png)
+  - Github Action CD worflow is trigered on release event ![GH_ACTION](images/gh_action.png)
+The produced docker image is uploaded to [dockerhub.com](https://hub.docker.com/r/stoyankanev/devtask/tags)
+
+  - Deployment to minikube
+```
+kubectl apply -f ./k8s/app-deployment.yaml
+deployment.apps/helloworld created
+service/helloworld-service created
+```
+
+- Next.
