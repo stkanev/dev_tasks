@@ -66,7 +66,8 @@ The produced docker image is uploaded to [dockerhub.com](https://hub.docker.com/
 
     ```
   - [Task 6] Deployment with helm 
-Create helm chart
+
+    - Create helm chart
     ```
     # create an initail app
     $helm create hello-app
@@ -74,7 +75,7 @@ Create helm chart
     # create the namespase helm-app 
     $kubectl create namespace helm-app
     ```
-Install the app 
+    - Install the app 
     ```
     $helm install helm-app ./helm/hello-app --namespace helm-app
       NAME: helm-app
@@ -98,7 +99,7 @@ Install the app
 ![HELM_PODS](images/helm_pods.png)
 
     ```
-      $helm uninstall helm-app --namespace helm-app
-         release "helm-app" uninstalled
+    $helm uninstall helm-app --namespace helm-app
+        release "helm-app" uninstalled
     ```
-- Next.
+- .
