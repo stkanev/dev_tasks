@@ -19,7 +19,7 @@ spec:
       containers:
       - name: appdeploy
         image: stoyankanev/devtask:latest
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5002
 ---
@@ -34,7 +34,10 @@ spec:
   - protocol: TCP
     port: 5000
     targetPort: 5002
-    name: hello-app
+    #nodePort: 30502
+    name: hello-app-name
   selector:
     app: hello-app
-  type: LoadBalancer
+#  type: LoadBalancer
+  type: ClusterIP
+
