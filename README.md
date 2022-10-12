@@ -96,7 +96,7 @@ The produced docker image is uploaded to [dockerhub.com](https://hub.docker.com/
       helm-app-hello-app-5bfb697654-mmwbh   1/1     Running   1 (2m6s ago)   4m27s
       helm-app-hello-app-5bfb697654-zb89p   1/1     Running   0              4m27s
     ```
-![HELM_PODS](images/helm_pods.png)
+    ![HELM_PODS](images/helm_pods.png)
 
     ```
     $helm uninstall helm-app --namespace helm-app
