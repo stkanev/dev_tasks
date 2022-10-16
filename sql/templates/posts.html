@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Posts {% endblock %}
+
+{% block body %}
+
+<div class="main-container">
+    {% for post in posts %}
+        <h2>{{ post[1] }}</h2>
+        <div> posted on:{{ post[3] }}</div>
+        <div>{{ post[2] }}</div>
+        <hr>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

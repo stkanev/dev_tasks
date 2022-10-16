@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-sql-app
+  labels:
+    app: web-sql-app
+spec:
+  selector:
+    matchLabels:
+      app: web-sql-app
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: web-sql-app
+    spec:
+      containers:
+      - name: appdeploy
+        image: stoyankanev/devtask-sql:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5002
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-sql-service
+  labels:
+    app: web-sql-app
+spec:
+  ports:
+  - protocol: TCP
+    port: 10002
+    targetPort: 5002
+    #nodePort: 30502
+    name: web-sql-app
+  selector:
+    app: web-sql-app
+#  type: LoadBalancer
+  type: ClusterIP
+
