@@ -9,7 +9,7 @@ This is repo for following DevOps tasks:
 5. Connect the application to SQL database running inside the mk k8s cluster
 6. Deploy the application using helm
 
-Installation and Set up (In progress)
+Installation and Set up
 ----------------
 
  - Clone the repo: `https://github.com/stkanev/dev_tasks.git`
@@ -26,7 +26,7 @@ Installation and Set up (In progress)
    - local env
    - etc.
 
-Execution (In progress)
+Execution
 ----------------
 
 - Local (dev) environment
@@ -102,4 +102,38 @@ The produced docker image is uploaded to [dockerhub.com](https://hub.docker.com/
     $helm uninstall helm-app --namespace helm-app
         release "helm-app" uninstalled
     ```
+  - [Task 5] Connect the application to a Postgres database running inside the mk k8s cluster 
+
+    - Implementation is available under ./sql folder.
+    All 5 yaml files are applied in a separate namespase
+    ```
+    f.e.
+    $kubectl apply -f .\postgres-service.yaml --namespace=t5
+      service/postgres created
+    $kubectl get all --namespace t5
+      NAME                            READY   STATUS    RESTARTS   AGE
+      pod/postgres-657bb64d5f-f4nsn   1/1     Running   0          2m18s
+      NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+      deployment.apps/postgres   1/1     1            1           2m18s
+      NAME                                  DESIRED   CURRENT   READY   AGE
+      replicaset.apps/postgres-657bb64d5f   1         1         1       2m18s
+    $kubectl apply -f .\webapp-deployment.yaml --namespace t5
+      deployment.apps/web-sql-app configured
+      service/web-sql-service created
+    ```
+     ![SQL_MK](images/sql_mkservices.png)
+    - Based on a python PM and flask FW. There are to endpoints `/create` and `./posts`. The first on create an entry int db. The second one read all entries from the table db "posts"
+    ```
+    http://localhost:50186/posts # read all entries
+    http://localhost:50186/create # create entry
+
+    ``` 
+    ![SQL_POSTSDB](images/sql_postsdb.png)
+    - Create endpoint
+    ![SQL_CREATE](images/sql_create.png)
+    - Posts endpoint - list posts
+    ![SQL_POSTS](images/sql_posts.png)
+
+
+
 - .
