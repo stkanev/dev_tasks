@@ -124,16 +124,14 @@ The produced docker image is uploaded to [dockerhub.com](https://hub.docker.com/
      ![SQL_MK](images/sql_mkservices.png)
     - Based on a python PM and flask FW. There are to endpoints `/create` and `./posts`. The first on create an entry int db. The second one read all entries from the table db "posts"
     ```
-    http://localhost:50186/posts # read all entries
+    http://localhost:50186/posts  # read all entries
     http://localhost:50186/create # create entry
-
     ``` 
-    ![SQL_POSTSDB](images/sql_postsdb.png)
     - Create endpoint
     ![SQL_CREATE](images/sql_create.png)
     - Posts endpoint - list posts
     ![SQL_POSTS](images/sql_posts.png)
+    - DB update
+    ![SQL_POSTSDB](images/sql_postsdb.png)
 
-
-
-- .
+- Enjoy :)
